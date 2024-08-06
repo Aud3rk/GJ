@@ -14,9 +14,15 @@ public class PickUpController : MonoBehaviour
     private Rigidbody heldObjRb;
     private int LayerNumber;
     private InputManager _inputManager;
-    
 
-    
+
+    public bool isPickingObject
+    {
+        get
+        {
+            return heldObj;
+        }
+    }
     void Start()
     {
         LayerNumber = LayerMask.NameToLayer("holdLayer");
