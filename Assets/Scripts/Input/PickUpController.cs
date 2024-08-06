@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
- using Resources.Scripts;
+using KeyElements;
+using Resources.Scripts;
  using UnityEngine;
 
 public class PickUpController : MonoBehaviour
@@ -37,16 +38,24 @@ public class PickUpController : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
                 {
-                    if (hit.transform.gameObject.CompareTag("canPickUp"))
+                    GameObject hitedGameObject = hit.transform.gameObject;
+                    if (hitedGameObject.CompareTag("canPickUp"))
                     {
-                        PickUpObject(hit.transform.gameObject);
+                        PickUpObject(hitedGameObject);
+                    }else if (hitedGameObject.GetComponent<KeyHolder>() &&
+                              hitedGameObject.GetComponent<KeyHolder>().KeyIsOn)
+                    {
+                        KeyHolder keyHolder = hitedGameObject.GetComponent<KeyHolder>();
+                        PickUpObject(keyHolder.Key);
+                        keyHolder.TakeKey();
+
                     }
                 }
             }
             else
             {
-                StopClipping(); 
-                DropObject();
+                StopClipping();
+                StopPickUp();
             }
         }
         if (heldObj != null) 
@@ -54,6 +63,13 @@ public class PickUpController : MonoBehaviour
             MoveObject();
         }
     }
+
+    public void StopPickUp()
+    {
+        
+        DropObject();
+    }
+
     void PickUpObject(GameObject pickUpObj)
     {
         if (pickUpObj.GetComponent<Rigidbody>())
@@ -68,6 +84,7 @@ public class PickUpController : MonoBehaviour
     }
     void DropObject()
     {
+        Debug.Log("some");
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         heldObj.layer = 0;
         heldObjRb.isKinematic = false;
