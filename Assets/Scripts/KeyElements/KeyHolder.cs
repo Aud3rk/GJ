@@ -2,13 +2,14 @@
 using System.Collections;
 using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace KeyElements
 {
     public class KeyHolder : MonoBehaviour
     {
         public int Index;
-
+        public UnityEvent KeyOn;
         private GameObject key;
 
         public GameObject Key
@@ -36,6 +37,9 @@ namespace KeyElements
                     other.transform.position = gameObject.transform.position;
                     other.transform.rotation = gameObject.transform.rotation;
                     other.GetComponent<Rigidbody>().isKinematic = true;
+                    if(keyObject.Index == Index)
+                        KeyOn.Invoke();
+                        
                 } 
             }
             Debug.Log("some");
