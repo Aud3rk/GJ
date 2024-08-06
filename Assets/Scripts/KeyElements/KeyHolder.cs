@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace KeyElements
 {
-    public class KeyHolder : MonoBehaviour
+    public class KeyHolder : MonoBehaviour, IInterctable
     {
         public int Index;
         public UnityEvent KeyOn;
@@ -30,12 +30,13 @@ namespace KeyElements
                 KeyIsOn = true;
                 key = other.gameObject;
                 Key keyObject = other.gameObject.GetComponent<Key>();
-                if (keyObject&&Camera.main.GetComponent<PickUpController>())
+                if (keyObject)
                 {
                     keyObject.InHole = true;
-                    Camera.main.GetComponent<PickUpController>().StopPickUp();
+                    other.GetComponent<PickUpController>().StopPickUp();
                     other.transform.position = gameObject.transform.position;
                     other.transform.rotation = gameObject.transform.rotation;
+                    other.transform.parent = null;
                     other.GetComponent<Rigidbody>().isKinematic = true;
                     if(keyObject.Index == Index)
                         KeyOn.Invoke();
@@ -44,11 +45,20 @@ namespace KeyElements
             }
             Debug.Log("some");
         }
-
+        public void Interact(GameObject gameObject)
+        {
+            if (KeyIsOn)
+            {
+                Key.GetComponent<IInterctable>().Interact(gameObject);
+                TakeKey();
+            }
+        }
+        
         public void TakeKey()
         {
             KeyIsOn = false;
         }
+
     }
     
 }
