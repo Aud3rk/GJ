@@ -56,5 +56,27 @@ namespace Resources.Scripts
             return _playerControls.Player.PickUp.triggered;
         }
         
+        public bool ControllCubeW()
+        {
+            return _playerControls.Player.ControllCube.triggered;
+        }
+        public bool ControllCubeS()
+        {
+            return _playerControls.Player.ControllS.triggered;
+        }
+        public bool ControllCubeD()
+        {
+            return _playerControls.Player.ControllD.triggered;
+        }
+        public bool ControllCubeA()
+        {
+            return _playerControls.Player.ControllA.triggered;
+        }
+
+        public bool TimeSkip()
+        {
+            return _playerControls.Player.TimeSkip.triggered;
+        }
+
     }
 }

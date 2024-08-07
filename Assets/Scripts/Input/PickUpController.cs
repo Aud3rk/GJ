@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using DG.Tweening;
 using KeyElements;
 using Resources.Scripts;
  using UnityEngine;
@@ -43,7 +44,7 @@ public class PickUpController : MonoBehaviour, IInterctable
         heldObjRb = heldObj.GetComponent<Rigidbody>();
         heldObjRb.isKinematic = true;
         heldObjRb.transform.parent = holdPos.transform;
-        heldObj.transform.position = holdPos.transform.position;
+        heldObj.transform.DOMove(holdPos.transform.position,0.25f);
         heldObj.transform.rotation = holdPos.transform.rotation;
         heldObj.layer = LayerNumber;
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);

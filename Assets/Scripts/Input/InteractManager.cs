@@ -10,7 +10,6 @@ namespace Resources.Scripts
         [SerializeField] private float pickUpRange = 1.5f;
         private InputManager _inputManager;
         private UIManager _uiManager;
-        
 
 
         private void Start()

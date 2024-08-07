@@ -8,6 +8,7 @@ namespace Wheel
     {
         [SerializeField] private Transform cameraPos;
         private InputManager _inputManager;
+        [SerializeField] private GameObject playerController;
 
         public void Start()
         {
@@ -17,7 +18,7 @@ namespace Wheel
         public void Interact(GameObject gameObject)
         {
             cameraPos.gameObject.SetActive(true);
-            PlayerController.Instance.gameObject.SetActive(false);
+            playerController.SetActive(false);
             this.gameObject.GetComponent<WheelController>().enabled = true;
             this.gameObject.GetComponent<WheelController>().InputManager = _inputManager;
         }
@@ -25,7 +26,7 @@ namespace Wheel
         public void EndInteract()
         {
             cameraPos.gameObject.SetActive(false);
-            PlayerController.Instance.gameObject.SetActive(true);
+            playerController.SetActive(true);
             this.gameObject.GetComponent<WheelController>().enabled = false;
         }
     }
