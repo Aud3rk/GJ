@@ -10,6 +10,7 @@ namespace KeyElements
     {
         public int Index;
         public UnityEvent KeyOn;
+        public Transform KeyPos; 
         private GameObject key;
 
         public GameObject Key
@@ -34,9 +35,11 @@ namespace KeyElements
                 {
                     keyObject.InHole = true;
                     other.GetComponent<PickUpController>().StopPickUp();
-                    other.transform.position = gameObject.transform.position;
-                    other.transform.rotation = gameObject.transform.rotation;
                     other.transform.parent = null;
+                    other.transform.position = KeyPos.position;
+                    other.transform.rotation = KeyPos.rotation;
+                    other.transform.localScale = KeyPos.localScale;
+                    
                     other.GetComponent<Rigidbody>().isKinematic = true;
                     if(keyObject.Index == Index)
                         KeyOn.Invoke();

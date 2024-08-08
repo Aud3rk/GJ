@@ -77,6 +77,7 @@ namespace Resources.Scripts
         {
             return _playerControls.Player.TimeSkip.triggered;
         }
+        
 
     }
 }

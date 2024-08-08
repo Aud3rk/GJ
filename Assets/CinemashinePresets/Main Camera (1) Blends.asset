@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Main Camera (1) Blends
   m_EditorClassIdentifier: 
   m_CustomBlends:
-  - m_From: VirtualCam1
-    m_To: VirtualCam
+  - m_From: CinemashineCamPast
+    m_To: CinemashineCamNow
     m_Blend:
       m_Style: 0
       m_Time: 2
@@ -24,8 +24,8 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: VirtualCam
-    m_To: VirtualCam1
+  - m_From: CinemashineCamNow
+    m_To: CinemashineCamPast
     m_Blend:
       m_Style: 0
       m_Time: 2
