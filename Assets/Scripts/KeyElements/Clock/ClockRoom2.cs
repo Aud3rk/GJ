@@ -27,6 +27,8 @@ namespace KeyElements
             cameraPos.gameObject.SetActive(true);
             playerController.SetActive(false);
             this.gameObject.GetComponent<ClockController>().enabled = true;
+            this.gameObject.GetComponent<ArrowController>().enabled = true;
+            
             this.gameObject.GetComponent<ClockController>().InputManager = _inputManager;
         }
 

@@ -9,7 +9,9 @@ namespace KeyElements
     {
         private void Update()
         {
-            //transform.DOLookAt(MouseCursor.)
+            Vector3 diff = Camera.main.ScreenToViewportPoint(Input.mousePosition) - transform.position;
+            float rotatZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0,0, rotatZ -90);
         }
     }
 }
