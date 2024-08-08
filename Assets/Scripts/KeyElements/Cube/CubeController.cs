@@ -29,11 +29,14 @@ public class CubeController : MonoBehaviour
         }
         else
         {
+            Debug.Log("some");
             if (InputManager.ControllCubeW())
             {
+                Debug.Log("some1");
+
                 if (codeToSolve[i] == LogicArrow.Up)
                 {
-                    clone.transform.RotateAround(parent.transform.position, VectorUp, 90);
+                    clone.transform.RotateAround(parent.transform.localPosition, VectorUp, 90);
                     transform.DORotate(clone.transform.rotation.eulerAngles, 0.15f);
                     i++;
                 }

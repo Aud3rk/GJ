@@ -14,14 +14,14 @@ namespace Events
     
         public float pickUpRange = 5f; 
         private float rotationSensitivity = 1f;
-        private Transform MugPos;
+        public Transform MugPos;
         private GameObject heldObj;
         private Rigidbody heldObjRb;
         private int LayerNumber;
-        
+        private Quaternion MugRot;
+
         public void Interact(GameObject gameObject)
         {
-            MugPos = transform;
             heldObj = this.gameObject;
             heldObjRb = heldObj.GetComponent<Rigidbody>();
             heldObjRb.isKinematic = true;
@@ -31,7 +31,6 @@ namespace Events
             player.GetComponent<PlayerController>().enabled = false;
             Camera.main.GetComponent<InteractManager>().enabled = false;
             MugKeeper mugKeeper = GetComponent<MugKeeper>();
-            mugKeeper.InputManager = InputManager.Instance;
             mugKeeper.enabled = true;
             
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
