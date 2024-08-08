@@ -6,9 +6,11 @@ public class CameraSwitchTimeAnimation : MonoBehaviour
 {
     [SerializeField] GameObject CameraPP;
     [SerializeField] GameObject CameraLens;
+    [SerializeField] GameObject CameraLens2;
 
     Animator _cameraPP;
     Animator _cameraLens;
+    Animator _cameraLens2;
 
     bool GoInPast = false;
 
@@ -16,8 +18,9 @@ public class CameraSwitchTimeAnimation : MonoBehaviour
     {
         _cameraPP = CameraPP.GetComponent<Animator>();
         _cameraLens = CameraLens.GetComponent<Animator>();
+        _cameraLens2 = CameraLens2.GetComponent<Animator>();
     }
-    void Update() //Вот это нахуй уберешь не хочу лезть в твою инпут систему
+    void Update() //Р’РѕС‚ СЌС‚Рѕ РЅР°С…СѓР№ СѓР±РµСЂРµС€СЊ РЅРµ С…РѕС‡Сѓ Р»РµР·С‚СЊ РІ С‚РІРѕСЋ РёРЅРїСѓС‚ СЃРёСЃС‚РµРјСѓ
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -33,5 +36,6 @@ public class CameraSwitchTimeAnimation : MonoBehaviour
 
         _cameraPP.SetBool("GoInPast", GoInPast);
         _cameraLens.SetBool("GoInPast", GoInPast);
+        _cameraLens2.SetBool("GoInPast", GoInPast);
     }
 }
