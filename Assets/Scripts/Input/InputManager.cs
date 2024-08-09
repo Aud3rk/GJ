@@ -77,7 +77,11 @@ namespace Resources.Scripts
         {
             return _playerControls.Player.TimeSkip.triggered;
         }
-        
+
+        public bool Pick()
+        {
+            return _playerControls.Player.Fire.triggered;
+        }
 
     }
 }

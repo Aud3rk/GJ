@@ -20,19 +20,10 @@ public class CameraSwitchTimeAnimation : MonoBehaviour
         _cameraLens = CameraLens.GetComponent<Animator>();
         _cameraLens2 = CameraLens2.GetComponent<Animator>();
     }
-    void Update() //Вот это нахуй уберешь не хочу лезть в твою инпут систему
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            GoInTimeAnimation();
-        }
-    }
+    
     public void GoInTimeAnimation()
     {
-        if (!GoInPast)
-            GoInPast = true;
-        else
-            GoInPast = false;
+        GoInPast = !GoInPast;
 
         _cameraPP.SetBool("GoInPast", GoInPast);
         _cameraLens.SetBool("GoInPast", GoInPast);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
@@ -13,7 +14,7 @@ public class PickUpController : MonoBehaviour, IInterctable
     
     public float pickUpRange = 5f; 
     private float rotationSensitivity = 1f;
-    private GameObject heldObj;
+    public GameObject heldObj;
     private Rigidbody heldObjRb;
     private int LayerNumber;
     
@@ -24,7 +25,6 @@ public class PickUpController : MonoBehaviour, IInterctable
 
     public void StopPickUp()
     {
-        
         DropObject();
     }
     
@@ -38,15 +38,23 @@ public class PickUpController : MonoBehaviour, IInterctable
         heldObj = null;
     }
 
-    public void Interact(GameObject gameObject)
+    public virtual void Interact(GameObject gameObject)
     {
-        heldObj = this.gameObject;
-        heldObjRb = heldObj.GetComponent<Rigidbody>();
-        heldObjRb.isKinematic = true;
-        heldObjRb.transform.parent = holdPos.transform;
-        heldObj.transform.DOMove(holdPos.transform.position,0.25f);
-        heldObj.transform.rotation = holdPos.transform.rotation;
-        heldObj.layer = LayerNumber;
-        Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+        if (heldObj == null)
+        {
+            heldObj = this.gameObject;
+            heldObjRb = heldObj.GetComponent<Rigidbody>();
+            heldObjRb.isKinematic = true;
+            heldObjRb.transform.parent = holdPos.transform;
+            heldObj.transform.DOMove(holdPos.transform.position,0.25f);
+            heldObj.transform.rotation = holdPos.transform.rotation;
+            heldObj.layer = LayerNumber;
+            Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+        }
+        else
+        {
+            DropObject();
+        }
+        
     }
 }

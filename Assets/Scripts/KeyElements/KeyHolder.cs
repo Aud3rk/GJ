@@ -38,15 +38,17 @@ namespace KeyElements
                     other.transform.parent = null;
                     other.transform.position = KeyPos.position;
                     other.transform.rotation = KeyPos.rotation;
-                    other.transform.localScale = KeyPos.localScale;
                     
                     other.GetComponent<Rigidbody>().isKinematic = true;
                     if(keyObject.Index == Index)
+                    {
+                        transform.GetComponent<Collider>().enabled = false;
                         KeyOn.Invoke();
+                        keyObject.GetComponent<Collider>().enabled = false;
+                    }
                         
                 } 
             }
-            Debug.Log("some");
         }
         public void Interact(GameObject gameObject)
         {

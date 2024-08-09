@@ -37,7 +37,7 @@ public class CubeController : MonoBehaviour
                 if (codeToSolve[i] == LogicArrow.Up)
                 {
                     clone.transform.RotateAround(parent.transform.localPosition, VectorUp, 90);
-                    transform.DORotate(clone.transform.rotation.eulerAngles, 0.15f);
+                    transform.DORotate(clone.transform.rotation.eulerAngles, 0.45f);
                     i++;
                 }
                 else
@@ -52,7 +52,7 @@ public class CubeController : MonoBehaviour
                 if (codeToSolve[i] == LogicArrow.Down)
                 {
                     clone.transform.RotateAround(parent.transform.position, VectorDown, 90);
-                    transform.DORotate(clone.transform.rotation.eulerAngles, 0.15f);
+                    transform.DORotate(clone.transform.rotation.eulerAngles, 0.45f);
                     i++;
                 }
                 else
@@ -67,7 +67,7 @@ public class CubeController : MonoBehaviour
                 if (codeToSolve[i] == LogicArrow.Left)
                 {
                     clone.transform.RotateAround(parent.transform.position, VectorLeft, 90);
-                    transform.DORotate(clone.transform.rotation.eulerAngles, 0.15f);
+                    transform.DORotate(clone.transform.rotation.eulerAngles, 0.45f);
                     i++;
                 }
                 else
@@ -82,7 +82,7 @@ public class CubeController : MonoBehaviour
                 if (codeToSolve[i] == LogicArrow.Right)
                 {
                     clone.transform.RotateAround(parent.transform.position, VectorRight, 90);
-                    transform.DORotate(clone.transform.rotation.eulerAngles, 0.15f);
+                    transform.DORotate(clone.transform.rotation.eulerAngles, 0.45f);
                     i++;
                 }
                 else

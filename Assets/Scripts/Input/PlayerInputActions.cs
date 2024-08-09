@@ -107,6 +107,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""a83907ea-cc21-4dd3-8100-4630a3ac6290"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -349,6 +358,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""TimeSkip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca0519ad-7980-4dc7-bb2f-2cefe490a54e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -945,6 +965,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_ControllA = m_Player.FindAction("ControllA", throwIfNotFound: true);
         m_Player_ControllD = m_Player.FindAction("ControllD", throwIfNotFound: true);
         m_Player_TimeSkip = m_Player.FindAction("TimeSkip", throwIfNotFound: true);
+        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1027,6 +1048,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ControllA;
     private readonly InputAction m_Player_ControllD;
     private readonly InputAction m_Player_TimeSkip;
+    private readonly InputAction m_Player_Fire;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1040,6 +1062,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @ControllA => m_Wrapper.m_Player_ControllA;
         public InputAction @ControllD => m_Wrapper.m_Player_ControllD;
         public InputAction @TimeSkip => m_Wrapper.m_Player_TimeSkip;
+        public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1076,6 +1099,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @TimeSkip.started += instance.OnTimeSkip;
             @TimeSkip.performed += instance.OnTimeSkip;
             @TimeSkip.canceled += instance.OnTimeSkip;
+            @Fire.started += instance.OnFire;
+            @Fire.performed += instance.OnFire;
+            @Fire.canceled += instance.OnFire;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1107,6 +1133,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @TimeSkip.started -= instance.OnTimeSkip;
             @TimeSkip.performed -= instance.OnTimeSkip;
             @TimeSkip.canceled -= instance.OnTimeSkip;
+            @Fire.started -= instance.OnFire;
+            @Fire.performed -= instance.OnFire;
+            @Fire.canceled -= instance.OnFire;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1298,6 +1327,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnControllA(InputAction.CallbackContext context);
         void OnControllD(InputAction.CallbackContext context);
         void OnTimeSkip(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
