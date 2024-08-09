@@ -8,6 +8,7 @@ namespace KeyElements
         public void OpenDoorAnim()
         {
             transform.DORotate(new Vector3(0, 175, 0), 3f);
+            GetComponent<AudioSource>().Play();
         }
     }
 }

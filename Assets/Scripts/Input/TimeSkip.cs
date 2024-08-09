@@ -9,7 +9,6 @@ namespace Resources.Scripts
     {
         [SerializeField] private CinemachineVirtualCamera camPast;
         [SerializeField] private CinemachineVirtualCamera camNow;
-        
         private InputManager InputManager;
         private CameraSwitchTimeAnimation _camAnim;
 
@@ -32,6 +31,9 @@ namespace Resources.Scripts
 
         public IEnumerator ChangeCams()
         {
+            _camAnim._audioSource.mute =_camAnim.GoInPast;
+            _camAnim._audioSource2.mute=!_camAnim.GoInPast;
+            
             yield return new WaitForSeconds(1f);
             camPast.Priority = -camPast.Priority;
             camNow.Priority = -camNow.Priority;

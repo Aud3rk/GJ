@@ -7,12 +7,15 @@ public class CameraSwitchTimeAnimation : MonoBehaviour
     [SerializeField] GameObject CameraPP;
     [SerializeField] GameObject CameraLens;
     [SerializeField] GameObject CameraLens2;
+    [SerializeField] public AudioSource _audioSource;
+    [SerializeField] public AudioSource _audioSource2;
+
 
     Animator _cameraPP;
     Animator _cameraLens;
     Animator _cameraLens2;
 
-    bool GoInPast = false;
+    public bool GoInPast = false;
 
     void Start()
     {
@@ -24,7 +27,6 @@ public class CameraSwitchTimeAnimation : MonoBehaviour
     public void GoInTimeAnimation()
     {
         GoInPast = !GoInPast;
-
         _cameraPP.SetBool("GoInPast", GoInPast);
         _cameraLens.SetBool("GoInPast", GoInPast);
         _cameraLens2.SetBool("GoInPast", GoInPast);

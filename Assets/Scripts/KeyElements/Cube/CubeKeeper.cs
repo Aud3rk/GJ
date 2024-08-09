@@ -9,6 +9,7 @@ namespace Cube
     {
         [SerializeField] private GameObject playerController;
         [SerializeField] private Transform cameraPos;
+        
         private InputManager _inputManager;
 
         public void Start()
@@ -29,6 +30,7 @@ namespace Cube
             cameraPos.gameObject.SetActive(false);
             playerController.SetActive(true);
             this.gameObject.GetComponent<CubeController>().enabled = false;
+            
         }
     }
 }
