@@ -24,8 +24,10 @@ namespace Resources.Scripts
             if (InputManager.TimeSkip())
             {
                 _camAnim.GoInTimeAnimation();
-                StartCoroutine(ChangeCams());
-                //ChangeCams();
+                _camAnim._audioSource.mute = _camAnim.GoInPast;
+                _camAnim._audioSource2.mute = !_camAnim.GoInPast;
+/*                StartCoroutine(ChangeCams());
+                //ChangeCams();*/
             }
         }
 
@@ -33,8 +35,8 @@ namespace Resources.Scripts
         {
             _camAnim._audioSource.mute =_camAnim.GoInPast;
             _camAnim._audioSource2.mute=!_camAnim.GoInPast;
-            
-            yield return new WaitForSeconds(1f);
+            _camAnim.GoInTimeAnimation();
+            yield return new WaitForSeconds(0.5f);
             camPast.Priority = -camPast.Priority;
             camNow.Priority = -camNow.Priority;
         }

@@ -8,21 +8,26 @@ namespace KeyElements.BooksRoom4.OrangeBook
     public class OrangeBook : PickUpController,IInscriptionaleObject
     {
         private string _inscription;
-        public string inscript="Напоследок надо погладить кота";
+        public string inscriptUse= "Напоследок надо погладить кота";
+        public string inscriptStatic = "";
         public UnityEvent Event;
-        
+
+        void Start()
+        {
+            _inscription = inscriptStatic;
+        }
         public override void Interact(GameObject gameObject)
         {
             if (heldObj == null)
             {
-                _inscription = inscript;
+                _inscription = inscriptUse;
                 base.Interact(gameObject);
                 Event.Invoke();
                 
             }
             else
             {
-                _inscription = "";
+                _inscription = inscriptStatic;
                 base.Interact(gameObject);
                 
             }
