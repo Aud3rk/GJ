@@ -19,6 +19,7 @@ namespace Cube
 
         public void Interact(GameObject gameObject)
         {
+            Debug.Log("s");
             cameraPos.gameObject.SetActive(true);
             playerController.SetActive(false);
             this.gameObject.GetComponent<CubeController>().enabled = true;

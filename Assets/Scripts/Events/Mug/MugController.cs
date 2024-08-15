@@ -7,7 +7,7 @@ namespace Events
 {
     public class MugController : MonoBehaviour, IInterctable, IInscriptionaleObject
     {
-        private string _inscription = "похоже, эта кружка напоминает мне о прошлом";
+        private string _inscription = "похоже, эта кружка напоминает мне о прошлом. Кнопка G";
 
         public GameObject player;
         public Transform holdPos;

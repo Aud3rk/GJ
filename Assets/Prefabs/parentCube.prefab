@@ -169,8 +169,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3298013, y: 1.2138157, z: 1.2626526}
-  m_Center: {x: 0.06597554, y: 0.037944723, z: 0.035992753}
+  m_Size: {x: 1.3298013, y: 1.8505905, z: 2.6013157}
+  m_Center: {x: 0.06597554, y: 0.013671587, z: 0.034225967}
 --- !u!114 &7185974421231486026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +202,10 @@ MonoBehaviour:
   codeToSolve: 000000000000000000000000000000000000000000000000
   parent: {fileID: 8108862252034975565}
   clone: {fileID: 3264759365813438680}
+  VectorUp: {x: 0, y: 0, z: 0}
+  VectorDown: {x: 0, y: 0, z: 0}
+  VectorLeft: {x: 0, y: 0, z: 0}
+  VectorRight: {x: 0, y: 0, z: 0}
 --- !u!114 &6994721284806953970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,4 +218,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b813aa90780249d88575e0e4e284793e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
   cameraPos: {fileID: 0}
