@@ -23,7 +23,6 @@ namespace KeyElements
         {
             if (!KeyIsOn)
             {
-                Debug.Log("2");
                 KeyIsOn = true;
                 key = other.gameObject;
                 Key keyObject = other.gameObject.GetComponent<Key>();
@@ -41,13 +40,11 @@ namespace KeyElements
                         transform.GetComponent<Collider>().enabled = false;
                         KeyOn.Invoke();
                         keyObject.GetComponent<Collider>().enabled = false;
-                        Debug.Log("right");
                     }
                         
                 } 
                 
             }
-            Debug.Log("1");
         }
         public void Interact(GameObject gameObject)
         {
@@ -64,10 +61,7 @@ namespace KeyElements
             key.GetComponent<Key>().InHole = false;
             key = null;
             KeyIsOn = false;
-            Debug.Log("3");
         }
-        
-
     }
     
 }

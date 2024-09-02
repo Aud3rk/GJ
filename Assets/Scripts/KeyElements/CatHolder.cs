@@ -35,6 +35,7 @@ namespace KeyElements
                 other.GetComponent<Animator>().SetBool("Trigger", true);
                 transform.DOScale(new Vector3(transform.localScale.x, 0.01f, transform.localScale.z), 4);
                 KeyPos.gameObject.GetComponent<LampRoom2>()._inscription = "Этот кот неплохо бы смотрелся в рамке";
+                KeyPos.gameObject.GetComponent<PickUpController>().enabled = true;
                 transform.GetComponent<Collider>().enabled = false;
                 KeyPos.gameObject.GetComponent<Collider>().enabled = true;
             }

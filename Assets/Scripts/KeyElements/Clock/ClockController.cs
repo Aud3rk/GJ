@@ -9,6 +9,8 @@ namespace KeyElements
     public class ClockController : MonoBehaviour
     {
         public GameObject Clock;
+        public GameObject Clock2;
+        
         public InputManager InputManager;
         public GameObject HourArrow;
         public GameObject MinuteArrow;
@@ -48,11 +50,11 @@ namespace KeyElements
                 Vector2 movement = InputManager.Instance.GetPlayerMovement();
                 Arrow.transform.Rotate(0, 0, -movement.x*0.25f);
                 if (rotationH - 2 < HourArrow.transform.rotation.eulerAngles.z &&
-                    HourArrow.transform.rotation.eulerAngles.z > rotationH &&
+                    HourArrow.transform.rotation.eulerAngles.z+2 > rotationH &&
                     rotationM - 2 < MinuteArrow.transform.rotation.eulerAngles.z &&
-                    MinuteArrow.transform.rotation.eulerAngles.z > rotationM &&
+                    MinuteArrow.transform.rotation.eulerAngles.z+2 > rotationM &&
                     rotationS - 2 < SecondArrow.transform.rotation.eulerAngles.z &&
-                    SecondArrow.transform.rotation.eulerAngles.z > rotationS)
+                    SecondArrow.transform.rotation.eulerAngles.z+2 > rotationS)
                     ClockCorrect.Invoke();
             }
             
@@ -60,7 +62,8 @@ namespace KeyElements
 
         public void EndInteraction()
         {
-            DOTween.Sequence().Append(Clock.transform.DOScale(Vector3.zero, 1f));
+            DOTween.Sequence().Append(Clock.transform.DOScale(Vector3.zero, 1f)).
+                Append(Clock2.transform.DOScale(Vector3.zero, 1f));
             GetComponent<ClockRoom2>().EndInteract();
         }
     }

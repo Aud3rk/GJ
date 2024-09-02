@@ -30,7 +30,6 @@ public class PickUpController : MonoBehaviour, IInterctable
     
     void DropObject()
     {
-        Debug.Log("some");
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         heldObj.layer = 0;
         heldObjRb.isKinematic = false;
@@ -42,14 +41,17 @@ public class PickUpController : MonoBehaviour, IInterctable
     {
         if (heldObj == null)
         {
-            heldObj = this.gameObject;
-            heldObjRb = heldObj.GetComponent<Rigidbody>();
-            heldObjRb.isKinematic = true;
-            heldObjRb.transform.parent = holdPos.transform;
-            heldObj.transform.DOMove(holdPos.transform.position,0.25f);
-            heldObj.transform.rotation = holdPos.transform.rotation;
-            heldObj.layer = LayerNumber;
-            Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+            if (GetComponent<PickUpController>().isActiveAndEnabled)
+            {
+                heldObj = this.gameObject;
+                heldObjRb = heldObj.GetComponent<Rigidbody>();
+                heldObjRb.isKinematic = true;
+                heldObjRb.transform.parent = holdPos.transform;
+                heldObj.transform.DOMove(holdPos.transform.position, 0.25f);
+                heldObj.transform.rotation = holdPos.transform.rotation;
+                heldObj.layer = LayerNumber;
+                Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+            }
         }
         else
         {

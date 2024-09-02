@@ -8,7 +8,7 @@ namespace KeyElements
 {
     public class ClockRoom2 : MonoBehaviour, IInscriptionaleObject, IInterctable
     {
-        private string _inscription = "А в это время в Англии пьют чай";
+        private string _inscription = "";
         public GameObject cameraPos;
         public GameObject playerController;
         private InputManager _inputManager;
