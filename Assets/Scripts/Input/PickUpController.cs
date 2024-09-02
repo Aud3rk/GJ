@@ -47,7 +47,7 @@ public class PickUpController : MonoBehaviour, IInterctable
                 heldObjRb = heldObj.GetComponent<Rigidbody>();
                 heldObjRb.isKinematic = true;
                 heldObjRb.transform.parent = holdPos.transform;
-                heldObj.transform.DOMove(holdPos.transform.position, 0.25f);
+                heldObj.transform.position = holdPos.transform.position;
                 heldObj.transform.rotation = holdPos.transform.rotation;
                 heldObj.layer = LayerNumber;
                 Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
