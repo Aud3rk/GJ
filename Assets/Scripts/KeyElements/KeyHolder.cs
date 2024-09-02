@@ -11,13 +11,8 @@ namespace KeyElements
         public int Index;
         public UnityEvent KeyOn;
         public Transform KeyPos; 
-        private GameObject key;
-
-        public GameObject Key
-        {
-            get { return key; }
-            set { key=value;}
-        }
+        public GameObject key;
+        
         public bool KeyIsOn
         {
             get;
@@ -28,6 +23,7 @@ namespace KeyElements
         {
             if (!KeyIsOn)
             {
+                Debug.Log("2");
                 KeyIsOn = true;
                 key = other.gameObject;
                 Key keyObject = other.gameObject.GetComponent<Key>();
@@ -45,24 +41,32 @@ namespace KeyElements
                         transform.GetComponent<Collider>().enabled = false;
                         KeyOn.Invoke();
                         keyObject.GetComponent<Collider>().enabled = false;
+                        Debug.Log("right");
                     }
                         
                 } 
+                
             }
+            Debug.Log("1");
         }
         public void Interact(GameObject gameObject)
         {
             if (KeyIsOn)
             {
-                Key.GetComponent<IInterctable>().Interact(gameObject);
+                key.GetComponent<IInterctable>().Interact(gameObject);
                 TakeKey();
+                
             }
         }
         
         public void TakeKey()
         {
+            key.GetComponent<Key>().InHole = false;
+            key = null;
             KeyIsOn = false;
+            Debug.Log("3");
         }
+        
 
     }
     
