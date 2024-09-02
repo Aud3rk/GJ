@@ -39,6 +39,8 @@ namespace Resources.Scripts
                 }
                 else _uiManager.Inscription.text = "";
             }
+            else _uiManager.Inscription.text = "";
+            
             
         }
     }

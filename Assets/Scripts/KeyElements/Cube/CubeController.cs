@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cube;
+using DefaultNamespace;
 using DG.Tweening;
+using KeyElements;
 using Resources.Scripts;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,9 +27,19 @@ public class CubeController : MonoBehaviour
     private int i = 0;
     public InputManager InputManager { get; set; }
 
+    private void OnDisable()
+    {
+        var inscription = GetComponent<LampRoom2>();
+        if (inscription != null)
+            inscription._inscription = "Взаимодействие  Е";
+    }
+
     private void OnEnable()
     {
          _audioSource = Camera.main.GetComponent<MusicProvider>().AudioSource;
+         var inscription = GetComponent<LampRoom2>();
+         if (inscription != null)
+             inscription._inscription = "";
 
     }
 
@@ -37,6 +49,7 @@ public class CubeController : MonoBehaviour
         if (InputManager.PlayerPickUp())
         {
             gameObject.GetComponent<CubeKeeper>().EndInteract();
+            
         }
         else
         {
